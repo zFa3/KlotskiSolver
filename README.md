@@ -1,4 +1,4 @@
-# My Python Klotski (hua rong dao) solver  
+# My Python Klotski (hua rong dao - 华容道) solver  
   
 This program uses BFS to find the shortest path  
 in a game of Klotski.  
