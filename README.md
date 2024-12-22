@@ -24,5 +24,5 @@ remove any piece from the board. Try to win in the least number of moves
 ![Screenshot 2024-12-22 at 12 55 37 PM](https://github.com/user-attachments/assets/6d829013-a307-4bdf-8ddf-0922d2ffe399)
 ![Screenshot 2024-12-22 at 12 55 22 PM](https://github.com/user-attachments/assets/d8e0a3f3-b0bf-4f81-903c-b1db9b9dc542)
 ![Screenshot 2024-12-22 at 12 55 13 PM](https://github.com/user-attachments/assets/10d669b9-a3df-4882-9eee-ebfaff173c19)
-![Screenshot 2024-12-22 at 1 00 17 PM](https://github.com/user-attachments/assets/3770a269-d0d5-4f15-a4a0-5419fc0197bb)  
+![Screenshot 2024-12-22 at 1 00 17 PM](https://github.com/user-attachments/assets/3770a269-d0d5-4f15-a4a0-5419fc0197bb)
 ![Screenshot 2024-12-22 at 1 07 00 PM](https://github.com/user-attachments/assets/c2933d05-5052-4b0f-92bd-d98827089008)
