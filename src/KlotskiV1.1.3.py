@@ -34,16 +34,6 @@ board = [ [4, 2, 0, 4],[4, 0, 0, 4],[1, 4, 4, 1],[0, 4, 4, 0],[4, 0, 0, 4] ]
 board = [ [0, 2, 0, 0],[0, 0, 0, 0],[5, 0, 5, 0],[4, 5, 0, 4],[5, 0, 5, 0] ]
 board = [ [2, 0, 1, 0],[0, 0, 0, 0],[4, 1, 5, 0],[1, 0, 4, 1],[0, 4, 4, 0] ]
 
-board = [
-    [4, 2, 0, 4],
-    [1, 0, 0, 1],
-    [0, 0, 1, 0],
-    [4, 0, 0, 4],
-    [5, 0, 5, 0]
-]
-# supposedly the longest theoretical position
-# ( has the longest sequence of moves )
-
 # default position
 board = [ [1, 2, 0, 1],[0, 0, 0, 0],[1, 5, 0, 1],[0, 4, 4, 0],[4, 0, 0, 4] ]
 
@@ -294,23 +284,23 @@ def findSolution() -> None:
         print(f"Move: {i[2]}")
         # wait for user input
 
-    # play the game yourself
-    def play():
-        global moves, board
-        board = drawShadow(board)
+# play the game yourself
+def play():
+    global moves, board
+    board = drawShadow(board)
+    printGB(board)
+    while not isWon(board):
+        moves += 1
+        print("Move number:", moves)
+        print("Legal moves:")
+        lmoves = legal_moves(board)
+        for i in lmoves:
+            print(i)
+        print("Enter the move you want to make:")
+        move = lmoves[int(input()) - 1]
+        board = playMove(board, move)
         printGB(board)
-        while not isWon(board):
-            moves += 1
-            print("Move number:", moves)
-            print("Legal moves:")
-            lmoves = legal_moves(board)
-            for i in lmoves:
-                print(i)
-            print("Enter the move you want to make:")
-            move = lmoves[int(input()) - 1]
-            board = playMove(board, move)
-            printGB(board)
-        print("You won in", moves, "moves")
+    print("You won in", moves, "moves")
 
 def generateRandomPosition(board):
     brd = board.copy()
