@@ -1,4 +1,5 @@
 # Hua rong dao (or Klotski) engine
+# zFa3 - Dec 22, 2024
 from collections import deque
 import time as tm
 
@@ -21,6 +22,7 @@ board = [
     [0, 4, 4, 0],
     [4, 0, 0, 4],
 ]
+'''
 board = [
     [1, 4, 4, 4],
     [0, 1, 2, 0],
@@ -35,7 +37,6 @@ board = [
     [4, 0, 0, 4],
     [5, 0, 5, 0],
 ]
-'''
 board = [
     [0, 2, 0, 0],
     [1, 0, 0, 1],
