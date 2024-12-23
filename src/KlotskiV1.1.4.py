@@ -10,10 +10,11 @@ COLS = 3
 # empty board to make custom postions
 # create your own starting position with this template
 
-# 1 -> vertical rectangle
-# 2 -> general
-# 4 -> 1 x 1 square
-# 5 -> horizontal rectangle
+# (0) 0 -> empty cell
+# (1) 1 -> vertical rectangle
+# (2) 2 -> general
+# (3) 3 -> 1 x 1 square
+# (4) 4 -> horizontal rectangle
 
 board = [
     [0, 0, 0, 0],
@@ -24,21 +25,25 @@ board = [
 ]
 
 # some other starting positions
-board = [ [4, 0, 5, 0],[0, 1, 2, 0],[0, 0, 0, 0],[5, 1, 5, 0],[5, 0, 4, 0] ]
-board = [ [1, 1, 0, 0],[0, 0, 5, 0],[4, 2, 0, 4],[4, 0, 0, 4],[5, 0, 5, 0] ]
-board = [ [2, 0, 1, 0],[0, 0, 0, 4],[5, 0, 5, 0],[4, 0, 1, 0],[5, 0, 0, 0] ]
-board = [ [1, 4, 4, 4],[0, 1, 2, 0],[1, 0, 0, 0],[0, 5, 0, 4],[0, 0, 5, 0] ]
-board = [ [4, 2, 0, 4],[1, 0, 0, 1],[0, 1, 0, 0],[4, 0, 0, 4],[5, 0, 5, 0] ]
-board = [ [0, 2, 0, 0],[1, 0, 0, 1],[0, 4, 4, 0],[4, 5, 0, 4],[5, 0, 5, 0] ]
-board = [ [4, 2, 0, 4],[4, 0, 0, 4],[1, 4, 4, 1],[0, 4, 4, 0],[4, 0, 0, 4] ]
-board = [ [0, 2, 0, 0],[0, 0, 0, 0],[5, 0, 5, 0],[4, 5, 0, 4],[5, 0, 5, 0] ]
-board = [ [2, 0, 1, 0],[0, 0, 0, 0],[4, 1, 5, 0],[1, 0, 4, 1],[0, 4, 4, 0] ]
+board = [ [3, 0, 4, 0],[0, 1, 2, 0],[0, 0, 0, 0],[4, 1, 4, 0],[4, 0, 3, 0] ]
+board = [ [1, 1, 0, 0],[0, 0, 4, 0],[3, 2, 0, 3],[3, 0, 0, 3],[4, 0, 4, 0] ]
+board = [ [2, 0, 1, 0],[0, 0, 0, 3],[4, 0, 4, 0],[3, 0, 1, 0],[4, 0, 0, 0] ]
+board = [ [1, 3, 3, 3],[0, 1, 2, 0],[1, 0, 0, 0],[0, 4, 0, 3],[0, 0, 4, 0] ]
+board = [ [3, 2, 0, 3],[1, 0, 0, 1],[0, 1, 0, 0],[3, 0, 0, 3],[4, 0, 4, 0] ]
+board = [ [0, 2, 0, 0],[1, 0, 0, 1],[0, 3, 3, 0],[3, 4, 0, 3],[4, 0, 4, 0] ]
+board = [ [3, 2, 0, 3],[3, 0, 0, 3],[1, 3, 3, 1],[0, 3, 3, 0],[3, 0, 0, 3] ]
+board = [ [0, 2, 0, 0],[0, 0, 0, 0],[4, 0, 4, 0],[3, 4, 0, 3],[4, 0, 4, 0] ]
+board = [ [2, 0, 1, 0],[0, 0, 0, 0],[3, 1, 4, 0],[1, 0, 3, 1],[0, 3, 3, 0] ]
 
 # default position
-board = [ [1, 2, 0, 1],[0, 0, 0, 0],[1, 5, 0, 1],[0, 4, 4, 0],[4, 0, 0, 4] ]
+board = [ [1, 2, 0, 1],[0, 0, 0, 0],[1, 4, 0, 1],[0, 3, 3, 0],[3, 0, 0, 3] ]
 
 # unicode characters
 pieces = [
+    [
+        "   ",
+        "   "
+    ],
     [
         "┌–┐",
         "| |",
@@ -59,14 +64,7 @@ pieces = [
         "┌––––┐",
         "└––––┘"
     ],
-    [
-        "   ",
-        "   "
-    ]
 ]
-
-# change indicies on the board to piece type
-indicies = { 0 : 4, 1 : 0,1 : 0,2 : 1,3 : 0,4 : 2,5 : 3,6 : 0,7 : 0,8 : 2,9 : 2,10 : 2 }
 
 # hashing the board, since lists are unhashable in python
 # unless they contain constants
@@ -94,7 +92,7 @@ def printGB(board : list) -> None:
             # of there is an object at the index
             if board[rows][cols]>0:
                 # for each character in the ascii representation
-                for row, item in enumerate(pieces[indicies[board[rows][cols]]]):
+                for row, item in enumerate(pieces[board[rows][cols]]):
                     for col, character in enumerate(item):
                         # assign the character to the new board
                         newBoard[rows*2+row][cols*3+col] = character
@@ -112,10 +110,9 @@ def legal_moves(position: list) -> list:
     # for each row in the board
     for row, i in enumerate(position):
         # for each column in the row
-        for col, j in enumerate(i):
-            if j > -1: # if the item is a piece and isn't negative
-                pieceType = indicies[j]
-                if pieceType == 0:
+        for col, pieceType in enumerate(i):
+            if pieceType > 0: # if the item is a piece and isn't negative
+                if pieceType == 1:
                     # if the piece is a vertical rectangle
                     # check the squares to determine if the move is legal
                     if col != COLS: # if the right spot is free and we are not at the edge
@@ -126,7 +123,7 @@ def legal_moves(position: list) -> list:
                         if (position[row+2][col] == 0): legalMoves.append([(row, col), (row+1, col)]) 
                     if row != 0: # if the cell above is free and we are not at the edge
                         if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) 
-                elif pieceType == 1:
+                elif pieceType == 2:
                     # if the piece is the general
                     if col != COLS-1: # if the right spot is free and we are not at the edge
                         if (position[row+1][col+2] == 0 and position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) 
@@ -136,7 +133,7 @@ def legal_moves(position: list) -> list:
                         if (position[row+2][col] == 0 and position[row+2][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) 
                     if row != 0: # if the cell above is free and we are not at the edge
                         if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) 
-                elif pieceType == 2:
+                elif pieceType == 3:
                     # single 1 x 1 square
                     if (col != COLS): # if the spot right is free and we are not at the edge
                         if (position[row][col+1] == 0): legalMoves.append([(row, col), (row, col+1)]) 
@@ -146,7 +143,7 @@ def legal_moves(position: list) -> list:
                         if (position[row+1][col] == 0): legalMoves.append([(row, col), (row+1, col)]) 
                     if (row != 0): # if the spot above is free and we are not at the edge
                         if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) 
-                elif pieceType == 3:
+                elif pieceType == 4:
                     # if the piece is the horizontal rectangle
                     if col != COLS-1: # if the spot right is free and we are not at the edge
                         if (position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) 
@@ -182,26 +179,24 @@ def drawShadow(board: list):
 
     # for each row and column etc etc.
     for row, i in enumerate(board):
-        for col, j in enumerate(i):
+        for col, pt in enumerate(i):
             # if the item is a piece
-            if j > 0:
-                # draw the correct shadow
-                pt = indicies[j]
+            if pt > 0:
                 # the shadow is the negative value of the piece number
                 negative = -board[row][col]
                 # there are only three pieces with a shadow,
                 # the vertical rectangle, the general, and the horizontal rectangle
 
                 # if the piece is a vertical rectangle
-                if pt == 0:
+                if pt == 1:
                     board[row+1][col] = negative
                 # if the piece is the general
-                if pt == 1:
+                if pt == 2:
                     board[row+1][col] = negative
                     board[row][col+1] = negative
                     board[row+1][col+1] = negative
                 # if the piece is a horizontal rectangle
-                if pt == 3:
+                if pt == 4:
                     board[row][col+1] = negative
     # return the board
     return board
