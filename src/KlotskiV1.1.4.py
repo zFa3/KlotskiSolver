@@ -152,26 +152,63 @@ def legal_moves(position: list) -> list:
                     if row != ROWS: # if the cell below is free and we are not at the edge
                         if (position[row+1][col] == 0 and position[row+1][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) 
                     if row != 0: # if the cell above is free and we are not at the edge
-                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) 
+                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)])
     # return the list of legal moves
     return legalMoves
 
 # play the move on the board
 def playMove(board: list, move: list) -> list:
-    # assign the new position the piece from the old position
+    pieceType = board[move[0][0]][move[0][1]]
+    # move is represented as [ [x1, y1], [x2, y2] ]
+    ydelta = (move[1][0] - move[0][0])
+    xdelta = (move[1][1] - move[0][1])
     board[move[1][0]][move[1][1]] = board[move[0][0]][move[0][1]]
-    # assign the old position to empty (zero)
     board[move[0][0]][move[0][1]] = 0
-    # redraw all the shadows
-    board = drawShadow(board)
+    # create the shadows here instead of calling the
+    # drawShadow function
+    if pieceType == 1:
+        # if the piece is a vertical rectangle
+        if ydelta == 1:
+            board[move[0][0]][move[0][1]] = 0
+            board[move[1][0]+1][move[1][1]] = -1
+        elif ydelta == -1:
+            board[move[0][0]+1][move[0][1]] = 0
+            board[move[0][0]][move[0][1]] = -1
+    elif pieceType == 2:
+        if ydelta == 1:
+            board[move[0][0]][move[0][1]] = 0
+            board[move[1][0]+1][move[1][1]] = -1
+            board[move[0][0]][move[0][1]+1] = 0
+            board[move[1][0]+1][move[1][1]+1] = -1
+        elif ydelta == -1:
+            board[move[0][0]+1][move[0][1]] = 0
+            board[move[0][0]][move[0][1]] = -1
+            board[move[0][0]+1][move[0][1]+1] = 0
+            board[move[0][0]][move[0][1]+1] = -1
+        # if the piece is the general
+        if xdelta == 1:
+            board[move[0][0]][move[0][1]] = 0
+            board[move[1][0]][move[1][1]+1] = -2
+            board[move[0][0]+1][move[0][1]] = 0
+            board[move[1][0]+1][move[1][1]+1] = -2
+        elif xdelta == -1:
+            board[move[0][0]][move[0][1]+1] = 0
+            board[move[0][0]][move[0][1]] = -2
+            board[move[0][0]+1][move[0][1]+1] = 0
+            board[move[0][0]+1][move[0][1]] = -2
+    elif pieceType == 4:
+        # if the piece is the horizontal rectangle
+        if xdelta == 1:
+            board[move[0][0]][move[0][1]] = 0
+            board[move[1][0]][move[1][1]+1] = -4
+        elif xdelta == -1:
+            board[move[0][0]][move[0][1]+1] = 0
+            board[move[0][0]][move[0][1]] = -4
     # return the new board
     return board
 
 # draw the 'shadow' for the pieces on the board
 def drawShadow(board: list):
-    # TODO can optimize this in the future, remove shadows entirely
-    # and handle all the pieces in the legal_moves function
-
     # copy the board
     for i in range(len(board)):
         # set all the old shadows ( the negative values ) to zero
@@ -208,7 +245,7 @@ def isWon(b: list) -> bool:
     return b[3][1] == 2
 
 # BFS algorithm searches through all possbile moves
-def BFS() -> list | None:
+def BFS() -> list | int:
     # create a deque to store the moves
     # from collections, allows for faster (O(1))
     # appends and pops from the front
