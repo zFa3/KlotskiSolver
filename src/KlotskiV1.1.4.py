@@ -113,50 +113,49 @@ def legal_moves(position: list) -> list:
     for row, i in enumerate(position):
         # for each column in the row
         for col, j in enumerate(i):
-            # if the item is a piece and isn't negative
-            if j > -1:
+            if j > -1: # if the item is a piece and isn't negative
                 pieceType = indicies[j]
                 if pieceType == 0:
                     # if the piece is a vertical rectangle
                     # check the squares to determine if the move is legal
-                    if col != COLS:
-                        if (position[row+1][col+1] == 0 and position[row][col+1] == 0): legalMoves.append([(row, col), (row, col+1)]) # if the right spot is free
-                    if col != 0:
-                        if (position[row+1][col-1] == 0 and position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) # if the left spot is free
-                    if row != ROWS-1:
-                        if (position[row+2][col] == 0): legalMoves.append([(row, col), (row+1, col)]) # if the cell below is free
-                    if row != 0:
-                        if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) # if the cell above is free
+                    if col != COLS: # if the right spot is free and we are not at the edge
+                        if (position[row+1][col+1] == 0 and position[row][col+1] == 0): legalMoves.append([(row, col), (row, col+1)]) 
+                    if col != 0: # if the left spot is free and we are not at the edge
+                        if (position[row+1][col-1] == 0 and position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) 
+                    if row != ROWS-1: # if the cell below is free and we are not at the edge
+                        if (position[row+2][col] == 0): legalMoves.append([(row, col), (row+1, col)]) 
+                    if row != 0: # if the cell above is free and we are not at the edge
+                        if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) 
                 elif pieceType == 1:
                     # if the piece is the general
-                    if col != COLS-1:
-                        if (position[row+1][col+2] == 0 and position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) # if the right spot is free
-                    if col != 0:
-                        if (position[row+1][col-1] == 0 and position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) # if the left spot is free
-                    if row != ROWS-1:
-                        if (position[row+2][col] == 0 and position[row+2][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) # if the cell below is free
-                    if row != 0:
-                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) # if the cell above is free
+                    if col != COLS-1: # if the right spot is free and we are not at the edge
+                        if (position[row+1][col+2] == 0 and position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) 
+                    if col != 0: # if the left spot is free and we are not at the edge
+                        if (position[row+1][col-1] == 0 and position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) 
+                    if row != ROWS-1: # if the cell below is free and we are not at the edge
+                        if (position[row+2][col] == 0 and position[row+2][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) 
+                    if row != 0: # if the cell above is free and we are not at the edge
+                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) 
                 elif pieceType == 2:
                     # single 1 x 1 square
-                    if (col != COLS):
-                        if (position[row][col+1] == 0): legalMoves.append([(row, col), (row, col+1)]) # if the spot right is free
-                    if (col != 0):
-                        if (position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) # if the spot left is free
-                    if (row != ROWS):
-                        if (position[row+1][col] == 0): legalMoves.append([(row, col), (row+1, col)]) # if the spot below is free
-                    if (row != 0):
-                        if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) # if the spot above is free
+                    if (col != COLS): # if the spot right is free and we are not at the edge
+                        if (position[row][col+1] == 0): legalMoves.append([(row, col), (row, col+1)]) 
+                    if (col != 0): # if the spot left is free and we are not at the edge
+                        if (position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) 
+                    if (row != ROWS): # if the spot below is free and we are not at the edge
+                        if (position[row+1][col] == 0): legalMoves.append([(row, col), (row+1, col)]) 
+                    if (row != 0): # if the spot above is free and we are not at the edge
+                        if (position[row-1][col] == 0): legalMoves.append([(row, col), (row-1, col)]) 
                 elif pieceType == 3:
                     # if the piece is the horizontal rectangle
-                    if col != COLS-1:
-                        if (position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) # if the spot right is free
-                    if col != 0:
-                        if (position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) # if the spot left is free
-                    if row != ROWS:
-                        if (position[row+1][col] == 0 and position[row+1][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) # if the cell below is free
-                    if row != 0:
-                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) # if the cell above is free
+                    if col != COLS-1: # if the spot right is free and we are not at the edge
+                        if (position[row][col+2] == 0): legalMoves.append([(row, col), (row, col+1)]) 
+                    if col != 0: # if the spot left is free and we are not at the edge
+                        if (position[row][col-1] == 0): legalMoves.append([(row, col), (row, col-1)]) 
+                    if row != ROWS: # if the cell below is free and we are not at the edge
+                        if (position[row+1][col] == 0 and position[row+1][col+1] == 0): legalMoves.append([(row, col), (row+1, col)]) 
+                    if row != 0: # if the cell above is free and we are not at the edge
+                        if (position[row-1][col] == 0 and position[row-1][col+1] == 0): legalMoves.append([(row, col), (row-1, col)]) 
     # return the list of legal moves
     return legalMoves
 
@@ -193,7 +192,7 @@ def drawShadow(board: list):
                 # there are only three pieces with a shadow,
                 # the vertical rectangle, the general, and the horizontal rectangle
 
-                # if the piece is a horizontal rectangle
+                # if the piece is a vertical rectangle
                 if pt == 0:
                     board[row+1][col] = negative
                 # if the piece is the general
@@ -201,7 +200,7 @@ def drawShadow(board: list):
                     board[row+1][col] = negative
                     board[row][col+1] = negative
                     board[row+1][col+1] = negative
-                # if the piece is a vertical rectangle
+                # if the piece is a horizontal rectangle
                 if pt == 3:
                     board[row][col+1] = negative
     # return the board
@@ -287,27 +286,45 @@ def findSolution() -> None:
 # play the game yourself
 def play():
     global moves, board
+    # prepare the board
     board = drawShadow(board)
+    # print the initial position
     printGB(board)
+    # while we did not win the game
     while not isWon(board):
+        # increase the number of moves by one
         moves += 1
+        # print the number of moves
         print("Move number:", moves)
         print("Legal moves:")
+        # generate the legal moves
         lmoves = legal_moves(board)
+        # print the legal moves
         for i in lmoves:
             print(i)
+        # choose the move
         print("Enter the move you want to make:")
+        # enter the move
         move = lmoves[int(input()) - 1]
+        # play the move
         board = playMove(board, move)
+        # print the new board
         printGB(board)
+    # if they won, then print the number of moves
+    # it took to win
     print("You won in", moves, "moves")
 
+# generate a random position
+# by making random moves
 def generateRandomPosition(board):
+    # copy the board
     brd = board.copy()
+    # make {RANDOMNESS} random moves
     RANDOMNESS = 100000
     for _ in range(RANDOMNESS):
         lm = legal_moves(brd)
         brd = playMove(brd, lm[randint(0, len(lm)-1)])
+    #return the board
     return brd
 
 # main function
