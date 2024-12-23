@@ -101,10 +101,34 @@ def printGB(board : list) -> None:
     # add a new line for padding
     print()
 
+def printGB2(board : list) -> None:
+    # seperate the board
+    print()
+    # create the board of characters
+    # that will be filled out
+    newBoard = [[" "] * 12 for _ in range(10)]
+    # for each row and column
+    for rows in range(ROWS+1):
+        for cols in range(COLS+1):
+            # of there is an object at the index
+            if board[rows][cols]>0:
+                # for each character in the ascii representation
+                for row, item in enumerate(pieces[board[rows][cols]]):
+                    for col, character in enumerate(item):
+                        # assign the character to the new board
+                        newBoard[rows*2+row][cols*3+col] = character
+            else:
+                for row in range(2):
+                    for col in range(3):
+                        newBoard[rows*2+row][cols*3+col] = str(abs(board[rows][cols]))
+    # join the list into a string and print it
+    for i in newBoard: print("".join(i))
+    # add a new line for padding
+    print()
+
 # generate all the legal moves
 def legal_moves(position: list) -> list:
-    # draw the 'shadow' of the pieces
-    position = drawShadow(position)
+    # printGB2(position)
     # create a new empty list to store legal moves
     legalMoves = []
     # for each row in the board
@@ -164,6 +188,8 @@ def playMove(board: list, move: list) -> list:
     xdelta = (move[1][1] - move[0][1])
     board[move[1][0]][move[1][1]] = board[move[0][0]][move[0][1]]
     board[move[0][0]][move[0][1]] = 0
+    # create the shadows here instead of calling the
+    # drawShadow function
     if pieceType == 1:
         # if the piece is a vertical rectangle
         if ydelta == 1:
@@ -182,14 +208,14 @@ def playMove(board: list, move: list) -> list:
         if ydelta == 1:
             board[move[0][0]][move[0][1]] = 0
             board[move[0][0]][move[0][1]+1] = 0
-            board[move[1][0]+1][move[1][1]] = -1
-            board[move[1][0]+1][move[1][1]+1] = -1
+            board[move[1][0]+1][move[1][1]] = -2
+            board[move[1][0]+1][move[1][1]+1] = -2
         elif ydelta == -1:
             board[move[0][0]+1][move[0][1]] = 0
             board[move[0][0]+1][move[0][1]+1] = 0
-            board[move[0][0]][move[0][1]] = -1
-            board[move[0][0]][move[0][1]+1] = -1
-            board[move[1][0]][move[1][1]+1] = -1
+            board[move[0][0]][move[0][1]] = -2
+            board[move[0][0]][move[0][1]+1] = -2
+            board[move[1][0]][move[1][1]+1] = -2
         # if the piece is the general
         if xdelta == 1:
             board[move[0][0]][move[0][1]] = 0
@@ -212,10 +238,10 @@ def playMove(board: list, move: list) -> list:
             board[move[0][0]][move[0][1]] = -4
         if ydelta == 1:
             board[move[0][0]][move[0][1]+1] = 0
-            board[move[1][0]][move[1][1]+1] = -1
+            board[move[1][0]][move[1][1]+1] = -4
         elif ydelta == -1:
             board[move[0][0]][move[0][1]+1] = 0
-            board[move[1][0]][move[1][1]+1] = -1
+            board[move[1][0]][move[1][1]+1] = -4
     # return the new board
     return board
 
