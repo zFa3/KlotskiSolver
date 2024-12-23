@@ -37,7 +37,7 @@ board = [ [2, 0, 1, 0],[0, 0, 0, 0],[3, 1, 4, 0],[1, 0, 3, 1],[0, 3, 3, 0] ]
 
 # default position
 board = [ [1, 2, 0, 1],[0, 0, 0, 0],[1, 4, 0, 1],[0, 3, 3, 0],[3, 0, 0, 3] ]
-
+board = [ [1, 3, 3, 3],[0, 1, 2, 0],[1, 0, 0, 0],[0, 4, 0, 3],[0, 0, 4, 0] ]
 # unicode characters
 pieces = [
     [
@@ -96,31 +96,6 @@ def printGB(board : list) -> None:
                     for col, character in enumerate(item):
                         # assign the character to the new board
                         newBoard[rows*2+row][cols*3+col] = character
-    # join the list into a string and print it
-    for i in newBoard: print("".join(i))
-    # add a new line for padding
-    print()
-
-def printGB2(board : list) -> None:
-    # seperate the board
-    print()
-    # create the board of characters
-    # that will be filled out
-    newBoard = [[" "] * 12 for _ in range(10)]
-    # for each row and column
-    for rows in range(ROWS+1):
-        for cols in range(COLS+1):
-            # of there is an object at the index
-            if board[rows][cols]>0:
-                # for each character in the ascii representation
-                for row, item in enumerate(pieces[board[rows][cols]]):
-                    for col, character in enumerate(item):
-                        # assign the character to the new board
-                        newBoard[rows*2+row][cols*3+col] = character
-            else:
-                for row in range(2):
-                    for col in range(3):
-                        newBoard[rows*2+row][cols*3+col] = str(abs(board[rows][cols]))
     # join the list into a string and print it
     for i in newBoard: print("".join(i))
     # add a new line for padding
