@@ -158,52 +158,8 @@ def legal_moves(position: list) -> list:
 
 # play the move on the board
 def playMove(board: list, move: list) -> list:
-    pieceType = board[move[0][0]][move[0][1]]
-    # move is represented as [ [x1, y1], [x2, y2] ]
-    ydelta = (move[1][0] - move[0][0])
-    xdelta = (move[1][1] - move[0][1])
     board[move[1][0]][move[1][1]] = board[move[0][0]][move[0][1]]
     board[move[0][0]][move[0][1]] = 0
-    # create the shadows here instead of calling the
-    # drawShadow function
-    if pieceType == 1:
-        # if the piece is a vertical rectangle
-        if ydelta == 1:
-            board[move[0][0]][move[0][1]] = 0
-            board[move[1][0]+1][move[1][1]] = -1
-        elif ydelta == -1:
-            board[move[0][0]+1][move[0][1]] = 0
-            board[move[0][0]][move[0][1]] = -1
-    elif pieceType == 2:
-        if ydelta == 1:
-            board[move[0][0]][move[0][1]] = 0
-            board[move[1][0]+1][move[1][1]] = -1
-            board[move[0][0]][move[0][1]+1] = 0
-            board[move[1][0]+1][move[1][1]+1] = -1
-        elif ydelta == -1:
-            board[move[0][0]+1][move[0][1]] = 0
-            board[move[0][0]][move[0][1]] = -1
-            board[move[0][0]+1][move[0][1]+1] = 0
-            board[move[0][0]][move[0][1]+1] = -1
-        # if the piece is the general
-        if xdelta == 1:
-            board[move[0][0]][move[0][1]] = 0
-            board[move[1][0]][move[1][1]+1] = -2
-            board[move[0][0]+1][move[0][1]] = 0
-            board[move[1][0]+1][move[1][1]+1] = -2
-        elif xdelta == -1:
-            board[move[0][0]][move[0][1]+1] = 0
-            board[move[0][0]][move[0][1]] = -2
-            board[move[0][0]+1][move[0][1]+1] = 0
-            board[move[0][0]+1][move[0][1]] = -2
-    elif pieceType == 4:
-        # if the piece is the horizontal rectangle
-        if xdelta == 1:
-            board[move[0][0]][move[0][1]] = 0
-            board[move[1][0]][move[1][1]+1] = -4
-        elif xdelta == -1:
-            board[move[0][0]][move[0][1]+1] = 0
-            board[move[0][0]][move[0][1]] = -4
     # return the new board
     return board
 
