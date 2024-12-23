@@ -3,7 +3,7 @@
 This program uses BFS to find the shortest path  
 in a game of Klotski.  
   
-![Screenshot 2024-12-22 at 11 00 42 AM](https://github.com/user-attachments/assets/c5a0511d-b814-475e-b304-2893596e7554)  
+![Screenshot 2024-12-23 at 12 50 48 PM](https://github.com/user-attachments/assets/0522eb03-ae11-4ee2-968d-3817938f6852)
 
 Note: Each 'Move' is one unit  
 example:  
@@ -16,13 +16,13 @@ the largest (2 x 2) piece to the exit at the bottom. You cannot jumo over any pi
 remove any piece from the board. Try to win in the least number of moves  
 
 # Some common/custom starting positions
-![Screenshot 2024-12-22 at 12 58 01 PM](https://github.com/user-attachments/assets/ec413adb-675e-4012-8db9-8f898087fd0b)
-![Screenshot 2024-12-22 at 12 57 26 PM](https://github.com/user-attachments/assets/f684be4e-8d3c-4df9-8a60-3b51e9413970)
-![Screenshot 2024-12-22 at 12 56 00 PM](https://github.com/user-attachments/assets/1b1c1f0b-0fc7-432e-8275-572b89a3aa92)
-![Screenshot 2024-12-22 at 12 55 50 PM](https://github.com/user-attachments/assets/f8d014a5-d196-4892-b7c0-7d04cee4085b)
-![Screenshot 2024-12-22 at 12 55 44 PM](https://github.com/user-attachments/assets/59f368fd-8beb-45cc-9206-80bed742fd7b)
-![Screenshot 2024-12-22 at 12 55 37 PM](https://github.com/user-attachments/assets/6d829013-a307-4bdf-8ddf-0922d2ffe399)
-![Screenshot 2024-12-22 at 12 55 22 PM](https://github.com/user-attachments/assets/d8e0a3f3-b0bf-4f81-903c-b1db9b9dc542)
-![Screenshot 2024-12-22 at 12 55 13 PM](https://github.com/user-attachments/assets/10d669b9-a3df-4882-9eee-ebfaff173c19)
-![Screenshot 2024-12-22 at 1 00 17 PM](https://github.com/user-attachments/assets/3770a269-d0d5-4f15-a4a0-5419fc0197bb)
-![Screenshot 2024-12-22 at 1 07 00 PM](https://github.com/user-attachments/assets/c2933d05-5052-4b0f-92bd-d98827089008)
+![Screenshot 2024-12-23 at 12 52 14 PM](https://github.com/user-attachments/assets/79a22c13-2bcd-47cd-a5cf-c1e343457917)
+![Screenshot 2024-12-23 at 12 51 48 PM](https://github.com/user-attachments/assets/bfed6136-9ba6-4713-b70a-c92d4fe1272e)
+![Screenshot 2024-12-23 at 12 51 41 PM](https://github.com/user-attachments/assets/782555c7-eb44-4963-8628-1d120482fe48)
+![Screenshot 2024-12-23 at 12 51 34 PM](https://github.com/user-attachments/assets/e1b9aa62-390e-47f0-b2c8-524ffda9d1e8)
+![Screenshot 2024-12-23 at 12 51 28 PM](https://github.com/user-attachments/assets/1b86f7c2-446d-4958-8a7c-b3c8edadf57b)
+![Screenshot 2024-12-23 at 12 51 23 PM](https://github.com/user-attachments/assets/b9d033cd-1f26-42ef-9570-40a5173b680b)
+![Screenshot 2024-12-23 at 12 51 17 PM](https://github.com/user-attachments/assets/d8d4633a-e684-4eb2-8297-e0cdbdb6536e)
+![Screenshot 2024-12-23 at 12 50 58 PM](https://github.com/user-attachments/assets/72509698-c9c1-4919-87c4-3dd66300cca9)
+![Screenshot 2024-12-23 at 12 50 48 PM](https://github.com/user-attachments/assets/61042ece-8d49-448f-8d9e-2e53fa54d225)
+![Screenshot 2024-12-23 at 12 50 34 PM](https://github.com/user-attachments/assets/10349fa3-1ea3-48cd-b499-ae389b3f85f5)
