@@ -1,7 +1,7 @@
-# Python Hua Rong Dao - 华容道 (Klotski) solver - zFa3
-  
-This program uses BFS to find the shortest path  
-in a game of Klotski.  
+# Hua Rong Dao - 华容道 (Klotski) solver - zFa3
+
+Written in 100% python, this program calculates the 
+best possible sequence of moves to solve the puzzle
   
 ![Screenshot 2024-12-23 at 12 50 48 PM](https://github.com/user-attachments/assets/0522eb03-ae11-4ee2-968d-3817938f6852)
 
