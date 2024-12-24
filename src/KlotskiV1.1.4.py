@@ -173,7 +173,7 @@ def playMove(board: list, move: list) -> list:
         elif ydelta == -1:
             board[move[0][0]+1][move[0][1]] = 0
             board[move[0][0]][move[0][1]] = -1
-        if xdelta == 1:
+        elif xdelta == 1:
             board[move[1][0]+1][move[1][1]] = -1
             board[move[0][0]+1][move[0][1]] = 0
         elif xdelta == -1:
@@ -192,7 +192,7 @@ def playMove(board: list, move: list) -> list:
             board[move[0][0]][move[0][1]+1] = -2
             board[move[1][0]][move[1][1]+1] = -2
         # if the piece is the general
-        if xdelta == 1:
+        elif xdelta == 1:
             board[move[0][0]][move[0][1]] = 0
             board[move[1][0]][move[1][1]+1] = -2
             board[move[0][0]+1][move[0][1]] = 0
@@ -211,7 +211,7 @@ def playMove(board: list, move: list) -> list:
         elif xdelta == -1:
             board[move[0][0]][move[0][1]+1] = 0
             board[move[0][0]][move[0][1]] = -4
-        if ydelta == 1:
+        elif ydelta == 1:
             board[move[0][0]][move[0][1]+1] = 0
             board[move[1][0]][move[1][1]+1] = -4
         elif ydelta == -1:
@@ -241,12 +241,12 @@ def drawShadow(board: list):
                 if pt == 1:
                     board[row+1][col] = negative
                 # if the piece is the general
-                if pt == 2:
+                elif pt == 2:
                     board[row+1][col] = negative
                     board[row][col+1] = negative
                     board[row+1][col+1] = negative
                 # if the piece is a horizontal rectangle
-                if pt == 4:
+                elif pt == 4:
                     board[row][col+1] = negative
     # return the board
     return board
