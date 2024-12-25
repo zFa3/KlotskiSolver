@@ -1,4 +1,6 @@
+#!/usr/bin/env python3
 # Hua rong dao (or Klotski) engine
+# written in Python3 by zFa3
 from random import randint
 from collections import deque
 import time as tm
