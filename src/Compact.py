@@ -1,4 +1,4 @@
-# this is a joke but still completely functional
+# this is a joke, no convections are followed BUT still completely functional program
 from collections import deque;import time;R=4;C=3;c=[[1,2,0,1],[0,0,0,0],[1,4,0,1],[0,3,3,0],[3,0,0,3]]
 d=[["   ","   "],["┌–┐","| |","| |","└–┘",],["┌––––┐","|    |","|    |","└––––┘",],["┌–┐","└–┘",],["┌––––┐","└––––┘"]]
 r=print;n=range;e=enumerate;G=tuple;z=list;t=int;Y=len;T=map;P=set;L=deque;S=time.perf_counter;s=chr;A=None;M=input
