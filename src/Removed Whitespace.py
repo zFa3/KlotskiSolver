@@ -1,14 +1,14 @@
+# this is a joke but still completely functional
 from collections import deque;import time;R=4;C=3;c=[[1,2,0,1],[0,0,0,0],[1,4,0,1],[0,3,3,0],[3,0,0,3]]
 d=[["   ","   "],["┌–┐","| |","| |","└–┘",],["┌––––┐","|    |","|    |","└––––┘",],["┌–┐","└–┘",],["┌––––┐","└––––┘"]]
 r=print;n=range;e=enumerate;tp=tuple;z=list;t=int;ln=len;mp=map;st=set;dq=deque;tm=time.perf_counter
-def h(c:z,i)->tp:
-    return tp(tp(q) for q in c) if not i else [z(mp(t,q)) for q in c]
+def h(c:z,i)->tp: return tp(tp(q) for q in c) if not i else [z(mp(t,q)) for q in c]
 def p(c:z)->None:
     r("\n");nb=[[" "] * 12 for _ in n(10)]
     for q in n(R+1):
         for x in n(C+1):
-            if c[q][x]>0:
-                for j, f in e(d[c[q][x]]):
+            for j, f in e(d[c[q][x]]):
+                if c[q][x]>0:
                     for h, g in e(f):nb[q*2+j][x*3+h]=g
     for i in nb:r("".join(i))
 def l(ps:z)->z:
