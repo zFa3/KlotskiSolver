@@ -1,7 +1,7 @@
 # this is a joke but still completely functional
 from collections import deque;import time;R=4;C=3;c=[[1,2,0,1],[0,0,0,0],[1,4,0,1],[0,3,3,0],[3,0,0,3]]
 d=[["   ","   "],["┌–┐","| |","| |","└–┘",],["┌––––┐","|    |","|    |","└––––┘",],["┌–┐","└–┘",],["┌––––┐","└––––┘"]]
-r=print;n=range;e=enumerate;tp=tuple;z=list;t=int;ln=len;mp=map;st=set;dq=deque;tm=time.perf_counter
+r=print;n=range;e=enumerate;tp=tuple;z=list;t=int;ln=len;mp=map;st=set;dq=deque;tm=time.perf_counter;s=chr
 def h(c:z,i)->tp: return tp(tp(q) for q in c) if not i else [z(mp(t,q)) for q in c]
 def p(c:z)->None:
     r("\n");nb=[[" "] * 12 for _ in n(10)]
@@ -33,7 +33,7 @@ def l(ps:z)->z:
             if t==4 and q!=0 and (ps[q-1][x]==0 and ps[q-1][x+1]==0):u([(q,x),(q-1,x)])
     return m
 def m(c:z,g:z)->z:
-    c=h(c,1);t=c[g[0][0]][g[0][1]];m=(g[1][0] - g[0][0]);b=(g[1][1] - g[0][1]);c[g[1][0]][g[1][1]]=c[g[0][0]][g[0][1]];c[g[0][0]][g[0][1]]=0
+    c=h(c,1);t=c[g[0][0]][g[0][1]];m=(g[1][0]-g[0][0]);b=(g[1][1]-g[0][1]);c[g[1][0]][g[1][1]]=c[g[0][0]][g[0][1]];c[g[0][0]][g[0][1]]=0
     if t==1 and m==1:c[g[0][0]][g[0][1]]=0;c[g[1][0]+1][g[1][1]]=-1
     if t==1 and m==-1:c[g[0][0]+1][g[0][1]]=0;c[g[0][0]][g[0][1]]=-1
     if t==1 and b==1:c[g[1][0]+1][g[1][1]]=-1;c[g[0][0]+1][g[0][1]]=0
@@ -63,7 +63,7 @@ def bfs()->z|t:
         for g in l(w):
             nr=m(h(w,0),g);o=h(nr,0)
             if not v.__contains__(o): v.add(o);ck.append(k + [(o,t + 1,g)])
-c=ds(c);r("\n\nINITIAL POSITION");p(h(c,1));t1=tm();ns=bfs()
+c=ds(c);r("\n\n"+s(73)+s(78)+s(73)+s(84)+s(73)+s(65)+s(76)+s(32)+s(80)+s(79)+s(83)+s(73)+s(84)+s(73)+s(79)+s(78));p(h(c,1));t1=tm();ns=bfs()
 if ns!=None:
-    r(f"Shortest path length: {ns[-1][1]}\nTime Taken: {(tm() - t1)*1000:0.2f} ms")
-    for i in ns:input("Press Enter for next move: \n");r(f"Move: {i[2]}");p(h(i[0],1))
+    r(s(83)+s(104)+s(111)+s(114)+s(116)+s(101)+s(115)+s(116)+s(32)+s(112)+s(97)+s(116)+s(104)+s(32)+s(108)+s(101)+s(110)+s(103)+s(116)+s(104)+s(58)+s(32)+f"{ns[-1][1]}\n"+s(84)+s(105)+s(109)+s(101)+s(32)+s(84)+s(97)+s(107)+s(101)+s(110)+s(58)+s(32)+f"{(tm()-t1)*1000:0.2f}"+s(32)+s(109)+s(115))
+    for i in ns:input(s(80)+s(114)+s(101)+s(115)+s(115)+s(32)+s(69)+s(110)+s(116)+s(101)+s(114)+s(32)+s(102)+s(111)+s(114)+s(32)+s(110)+s(101)+s(120)+s(116)+s(32)+s(109)+s(111)+s(118)+s(101)+s(58)+s(32)+"\n");r(s(109)+s(111)+s(118)+s(101)+s(58)+s(32)+f"{i[2]}");p(h(i[0],1))
