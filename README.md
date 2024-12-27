@@ -11,9 +11,9 @@ example:
 
 # How the game of 华容道 works  
 
-Hua Rong Dao is a very old Chinese game, where you slide pieces around to get the 'General'  
-the largest (2 x 2) piece to the exit at the bottom. You cannot jumo over any pieces or  
-remove any piece from the board. Try to win in the least number of moves  
+Hua Rong Dao is a very old Chinese game, where you slide pieces to get the 'General'  
+the largest (2 x 2) piece to the exit at the bottom of the board. You cannot jump over any piece or  
+remove any piece from the board.
 
 # Some common/custom starting positions
 ![Screenshot 2024-12-23 at 12 52 14 PM](https://github.com/user-attachments/assets/79a22c13-2bcd-47cd-a5cf-c1e343457917)
