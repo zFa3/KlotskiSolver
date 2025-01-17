@@ -5,7 +5,7 @@ best possible sequence of moves to solve the puzzle
   
 ![Screenshot 2024-12-23 at 12 50 48 PM](https://github.com/user-attachments/assets/0522eb03-ae11-4ee2-968d-3817938f6852)
 
-Note: Each 'Move' is one unit  
+Note: Each 'Move' is one unit in any direction  
 example:  
 ![Screenshot 2024-12-22 at 12 08 17 PM](https://github.com/user-attachments/assets/15404798-6783-47b1-85ca-7a18cad20832)
 
