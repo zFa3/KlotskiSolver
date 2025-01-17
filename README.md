@@ -1,4 +1,4 @@
-# Hua Rong Dao - 华容道 (Klotski) solver - zFa3
+# Hua Rong Dao - 华容道 (Klotski) solver
 
 Written in 100% python, this program calculates the 
 best possible sequence of moves to solve the puzzle
