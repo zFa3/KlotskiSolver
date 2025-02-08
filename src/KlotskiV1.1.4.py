@@ -5,19 +5,12 @@ from random import randint
 from collections import deque
 import time as tm
 
-# dimensions
+# dimensions (zero indexed)
 ROWS = 4
 COLS = 3
 
-# Default Starting Position
-board = [
-
-    [1, 2, 0, 1],
-    [0, 0, 0, 0],
-    [1, 4, 0, 1],
-    [0, 3, 3, 0],
-    [3, 0, 0, 3] 
-]
+# default position
+board = [ [1, 2, 0, 1],[0, 0, 0, 0],[1, 4, 0, 1],[0, 3, 3, 0],[3, 0, 0, 3] ]
 
 # unicode characters
 pieces = [
@@ -66,7 +59,7 @@ def printGB(board : list) -> None:
     print()
     # create the board of characters
     # that will be filled out
-    newBoard = [[" "] * 12 for _ in range(10)]
+    newBoard = [[" "] * ((3 * (COLS + 1))) for _ in range(2 * (ROWS + 1))]
     # for each row and column
     for rows in range(ROWS+1):
         for cols in range(COLS+1):
@@ -154,7 +147,7 @@ def playMove(board: list, move: list) -> list:
         elif ydelta == -1:
             board[move[0][0]+1][move[0][1]] = 0
             board[move[0][0]][move[0][1]] = -1
-        elif xdelta == 1:
+        if xdelta == 1:
             board[move[1][0]+1][move[1][1]] = -1
             board[move[0][0]+1][move[0][1]] = 0
         elif xdelta == -1:
@@ -173,7 +166,7 @@ def playMove(board: list, move: list) -> list:
             board[move[0][0]][move[0][1]+1] = -2
             board[move[1][0]][move[1][1]+1] = -2
         # if the piece is the general
-        elif xdelta == 1:
+        if xdelta == 1:
             board[move[0][0]][move[0][1]] = 0
             board[move[1][0]][move[1][1]+1] = -2
             board[move[0][0]+1][move[0][1]] = 0
@@ -192,7 +185,7 @@ def playMove(board: list, move: list) -> list:
         elif xdelta == -1:
             board[move[0][0]][move[0][1]+1] = 0
             board[move[0][0]][move[0][1]] = -4
-        elif ydelta == 1:
+        if ydelta == 1:
             board[move[0][0]][move[0][1]+1] = 0
             board[move[1][0]][move[1][1]+1] = -4
         elif ydelta == -1:
@@ -222,12 +215,12 @@ def drawShadow(board: list):
                 if pt == 1:
                     board[row+1][col] = negative
                 # if the piece is the general
-                elif pt == 2:
+                if pt == 2:
                     board[row+1][col] = negative
                     board[row][col+1] = negative
                     board[row+1][col+1] = negative
                 # if the piece is a horizontal rectangle
-                elif pt == 4:
+                if pt == 4:
                     board[row][col+1] = negative
     # return the board
     return board
@@ -236,13 +229,19 @@ def drawShadow(board: list):
 # by checking if the general
 # is at the end
 def isWon(b: list) -> bool:
-    return b[3][1] == 2
+    # the location (x, y) is:
+    # floor(WIDTH / 2)
+    # HEIGHT - 1 == ROWS (since zero indexed)
+    return b[ROWS - 1][COLS // 2] == 2
 
 # BFS algorithm searches through all possbile moves
 def BFS() -> list | int:
     # create a deque to store the moves
     # from collections, allows for faster (O(1))
     # appends and pops from the front
+
+    # format:
+    # board position - depth - move [from, to]
     deck = deque([[(board, 0, [(0, 0), (0, 0)])]])
     # create a new set to ensure we dont get stuck in a loop
     # we only search moves that leads us to a position we haven't seen before
