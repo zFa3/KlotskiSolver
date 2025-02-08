@@ -215,12 +215,12 @@ def drawShadow(board: list):
                 if pt == 1:
                     board[row+1][col] = negative
                 # if the piece is the general
-                if pt == 2:
+                elif pt == 2:
                     board[row+1][col] = negative
                     board[row][col+1] = negative
                     board[row+1][col+1] = negative
                 # if the piece is a horizontal rectangle
-                if pt == 4:
+                elif pt == 4:
                     board[row][col+1] = negative
     # return the board
     return board
