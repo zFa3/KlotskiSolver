@@ -2,11 +2,17 @@
 
 Written in 100% python, this program calculates the 
 best possible sequence of moves to solve the puzzle
+    
   
-![Screenshot 2024-12-23 at 12 50 48 PM](https://github.com/user-attachments/assets/0522eb03-ae11-4ee2-968d-3817938f6852)
-
+# Demo  
+  
+![Klotski](https://github.com/user-attachments/assets/ecf3fa7f-31d3-4281-a12b-51b90356336a)
+  
+  
+    
 Note: Each 'Move' is one unit in any direction  
 example:  
+  
 ![Screenshot 2024-12-22 at 12 08 17 PM](https://github.com/user-attachments/assets/15404798-6783-47b1-85ca-7a18cad20832)
 
 # How the game of 华容道 works  
@@ -15,7 +21,7 @@ Hua Rong Dao is a very old Chinese game, where you slide pieces to get the 'Gene
 the largest (2 x 2) piece to the exit at the bottom of the board. You cannot jump over any piece or  
 remove any piece from the board.
 
-# Some common/custom starting positions
+# Some example starting positions
 ![Screenshot 2024-12-23 at 12 52 14 PM](https://github.com/user-attachments/assets/79a22c13-2bcd-47cd-a5cf-c1e343457917)
 ![Screenshot 2024-12-23 at 12 51 48 PM](https://github.com/user-attachments/assets/bfed6136-9ba6-4713-b70a-c92d4fe1272e)
 ![Screenshot 2024-12-23 at 12 51 41 PM](https://github.com/user-attachments/assets/782555c7-eb44-4963-8628-1d120482fe48)
